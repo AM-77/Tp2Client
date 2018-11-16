@@ -84,5 +84,33 @@ public class FXMLDocumentController  implements Initializable {
 		}
     	
     }  
+    
+    public void errorMessage(Label l, String msg){
+    	l.setText(msg);
+    }
+    
+    public void confirmMessage(Label l, String msg){
+    	l.setText(msg);
+    }
+    
+    public boolean isValidInput(TextField id, TextField q, Label confirm){
+    			
+		if(! id.getText().trim().equals("")){
+			try{
+				if(Integer.parseInt(q.getText().trim()) >=0){
+					return true;
+				}else{
+					errorMessage(confirm, "Please enter a valid quantity number.");
+					return false;
+				}
+			}catch(Exception e){
+				errorMessage(confirm, "Please enter a valid quantity number.");
+			}
+		}else{
+			errorMessage(confirm, "Please enter a valid article ID.");
+		} 
+    	
+    	return false;
+    }
         
 }

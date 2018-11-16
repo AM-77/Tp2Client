@@ -53,7 +53,18 @@ public class FXMLDocumentController  implements Initializable {
 
 	@FXML
 	public void onCreate(){
+		if(isValidInput(create_id, create_q, create_confirm)){
 
+			try{
+				if(stockImpl.createArticle(create_id.getText().trim(), Integer.parseInt(create_q.getText().trim()))){
+					confirmMessage(create_confirm, "The article was created succefully");
+				}else{
+					errorMessage(create_confirm, "There was an error, please try again.");
+				}
+			}catch(Exception e){
+				errorMessage(create_confirm, "The article already exists.");
+			}
+		}
 	}
 	
 	@FXML

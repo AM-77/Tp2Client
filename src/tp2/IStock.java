@@ -1,16 +1,16 @@
 package tp2;
 
 import java.rmi.Remote;
-import java.rmi.RemoteException;
+//import java.rmi.RemoteException;
 
 public interface IStock extends Remote{
 		
-	void createArticle(String id, int q_init) throws RemoteException;
+	boolean createArticle(String id, int q_init) throws /* RemoteException, */ Exception;
 	
-	boolean sale(String id, int q) throws RemoteException;
+	boolean sale(String id, int q) throws /* RemoteException, */ Exception;
 	
-	void provision(String id, int q) throws RemoteException;
+	boolean provision(String id, int q) throws /* RemoteException, */ Exception;
 	
-	State state(String id) throws RemoteException;
+	State state(String id) throws /* RemoteException, */ Exception;
 	
 }

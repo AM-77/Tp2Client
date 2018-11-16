@@ -86,7 +86,17 @@ public class FXMLDocumentController  implements Initializable {
 	
 	@FXML
 	public void onAppro(){
-		
+		if(isValidInput(prov_id, prov_q, prov_confirm)){
+			try{
+				if(stockImpl.provision(prov_id.getText().trim(), Integer.parseInt(prov_q.getText().trim()))){
+					confirmMessage(prov_confirm, "The article was provided succefully");
+				}else{
+					errorMessage(prov_confirm, "There was an error, please try again.");
+				}
+			}catch(Exception e){
+				errorMessage(prov_confirm, "The article '" + prov_id.getText().trim() + "' does not exist.");
+			}	
+		}
 	}
 	
 	@FXML

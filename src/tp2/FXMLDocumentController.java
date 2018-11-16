@@ -113,6 +113,10 @@ public class FXMLDocumentController  implements Initializable {
 				
 				confirmMessage(state_confirm, "");
 			}catch(Exception e){
+				
+				state_q.setText("");
+				state_l_op.setText("");
+				
 				errorMessage(state_confirm, "The article '" + state_id.getText().trim() + "' does not exist.");
 			}	
 		}

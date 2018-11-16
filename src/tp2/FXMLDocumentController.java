@@ -64,7 +64,7 @@ public class FXMLDocumentController  implements Initializable {
 			}catch(Exception e){
 				errorMessage(create_confirm, "The article already exists.");
 			}
-		}
+		} 
 	}
 	
 	@FXML

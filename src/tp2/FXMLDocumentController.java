@@ -14,6 +14,9 @@ import javafx.scene.paint.Paint;
 
 public class FXMLDocumentController  implements Initializable {
 
+	private static State state;
+	private static IStock stockImpl;
+	
 	@FXML
 	public Button create_btn;
 	@FXML
@@ -101,7 +104,18 @@ public class FXMLDocumentController  implements Initializable {
 	
 	@FXML
 	public void onState(){
+		if(isValidInput(state_id, _state_q, state_confirm)){
+			try{
+				state = (State) stockImpl.state(state_id.getText().trim());
+				state_q.setText(state.getq() + " item.");
 
+				state_l_op.setText(state.getLastOp().toString().substring(0, 10) + " at" + state.getLastOp().toString().substring(10, state.getLastOp().toString().length()-2));
+				
+				confirmMessage(state_confirm, "");
+			}catch(Exception e){
+				errorMessage(state_confirm, "The article '" + state_id.getText().trim() + "' does not exist.");
+			}	
+		}
 	}
 	
     @Override

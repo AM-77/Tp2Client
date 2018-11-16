@@ -69,7 +69,19 @@ public class FXMLDocumentController  implements Initializable {
 	
 	@FXML
 	public void onSale(){
-
+		if(isValidInput(sale_id, sale_q, sale_confirm)){
+			try{
+				if(stockImpl.sale(sale_id.getText().trim(), Integer.parseInt(sale_q.getText().trim()))){
+					confirmMessage(sale_confirm, "The article was sold succefully");
+				}else{
+					errorMessage(sale_confirm, "The article quntity insuffisable. There is " +  stockImpl.state(sale_id.getText().trim()).getq() + " item left." );
+				}
+			}catch(Exception e){
+				
+				System.out.println(e.getMessage());
+				errorMessage(sale_confirm, "The article '" + sale_id.getText().trim() + "' does not exist.");
+			}	
+		}
 	}
 	
 	@FXML

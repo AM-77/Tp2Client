@@ -10,7 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Paint;
+import javafx.scene.paint.Color;
 
 public class FXMLDocumentController  implements Initializable {
 
@@ -77,7 +77,7 @@ public class FXMLDocumentController  implements Initializable {
 				if(stockImpl.sale(sale_id.getText().trim(), Integer.parseInt(sale_q.getText().trim()))){
 					confirmMessage(sale_confirm, "The article was sold succefully");
 				}else{
-					errorMessage(sale_confirm, "The article quntity insuffisable. There is " +  stockImpl.state(sale_id.getText().trim()).getq() + " item left." );
+					errorMessage(sale_confirm, "The article quntity insuffisable. Only " +  stockImpl.state(sale_id.getText().trim()).getq() + " item left." );
 				}
 			}catch(Exception e){
 				
@@ -138,10 +138,12 @@ public class FXMLDocumentController  implements Initializable {
     
     public void errorMessage(Label l, String msg){
     	l.setText(msg);
+    	l.setTextFill(Color.web("#E11919"));
     }
     
     public void confirmMessage(Label l, String msg){
     	l.setText(msg);
+    	l.setTextFill(Color.web("#119955"));
     }
     
     public boolean isValidInput(TextField id, TextField q, Label confirm){

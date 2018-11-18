@@ -126,6 +126,8 @@ public class FXMLDocumentController  implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
     	try {
+    		
+    		System.setProperty("java.rmi.server.hostname","10.42.0.1");
 			System.setSecurityManager(new SecurityManager());
 			Registry registry = LocateRegistry.getRegistry(1099);
 			stockImpl =  (IStock) registry.lookup("stockImpl");	
@@ -139,15 +141,11 @@ public class FXMLDocumentController  implements Initializable {
     public void errorMessage(Label l, String msg){
     	l.setText(msg);
     	l.setTextFill(Color.web("#E11919"));
-    	
-    	setTimeout(() -> l.setText("") , 2000);
     }
     
     public void confirmMessage(Label l, String msg){
     	l.setText(msg);
     	l.setTextFill(Color.web("#119955"));
-    	
-    	setTimeout(() -> l.setText("") , 2000);
     }
     
     public boolean isValidInput(TextField id, TextField q, Label confirm){
@@ -169,18 +167,5 @@ public class FXMLDocumentController  implements Initializable {
     	
     	return false;
     }
-    
-    
-    public static void setTimeout(Runnable runnable, int delay){
-        new Thread(() -> {
-            try {
-                Thread.sleep(delay);
-                runnable.run();
-            }
-            catch (Exception e){
-                System.err.println("There was an error in the setTimeout: " + e.getMessage());
-            }
-        }).start();
-    }
-        
+           
 }

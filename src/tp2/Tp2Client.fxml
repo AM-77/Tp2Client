@@ -75,7 +75,7 @@
       </Pane>
       <Pane layoutX="3.0" layoutY="195.0" prefHeight="79.0" prefWidth="703.0">
          <children>
-            <JFXButton fx:id="prov_bnt" layoutX="14.0" layoutY="43.0" onAction="#onAppro" prefHeight="31.0" prefWidth="140.0" ripplerFill="BLACK" style="-fx-background-color: #dddddd;" text="Approvision ">
+            <JFXButton fx:id="prov_bnt" layoutX="14.0" layoutY="43.0" onAction="#onAppro" prefHeight="31.0" prefWidth="140.0" ripplerFill="BLACK" style="-fx-background-color: #dddddd;" text="Provision ">
                <font>
                   <Font name="Roboto Regular" size="14.0" />
                </font>

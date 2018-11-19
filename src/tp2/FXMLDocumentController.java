@@ -80,8 +80,6 @@ public class FXMLDocumentController  implements Initializable {
 					errorMessage(sale_confirm, "The article quntity insuffisable. Only " +  stockImpl.state(sale_id.getText().trim()).getq() + " item left." );
 				}
 			}catch(Exception e){
-				
-				System.out.println(e.getMessage());
 				errorMessage(sale_confirm, "The article '" + sale_id.getText().trim() + "' does not exist.");
 			}	
 		}
@@ -116,7 +114,6 @@ public class FXMLDocumentController  implements Initializable {
 				
 				state_q.setText("");
 				state_l_op.setText("");
-				
 				errorMessage(state_confirm, "The article '" + state_id.getText().trim() + "' does not exist.");
 			}	
 		}
@@ -127,10 +124,15 @@ public class FXMLDocumentController  implements Initializable {
         
     	try {
     		
-    		System.setProperty("java.rmi.server.hostname","10.42.0.1");
+    		/*
+    		 * Replace ServerIp by its value.
+    		 */
+    		System.setProperty("java.rmi.server.hostname","ServerIP");
 			System.setSecurityManager(new SecurityManager());
 			Registry registry = LocateRegistry.getRegistry(1099);
 			stockImpl =  (IStock) registry.lookup("stockImpl");	
+			
+			System.out.println();
 			
 		} catch (Exception e) {
 			System.err.println("There was an error in intialize :" + e.getMessage());
